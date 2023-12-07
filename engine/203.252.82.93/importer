@@ -1,0 +1,32 @@
+'''
+module importer
+
+this is module for the WHAT2025 system
+
+this is module for importing/reading the input file
+
+01. this module will import/read the file
+#! this will sue the sample file from WHAT2020
+#todo if available, let's make usgs data imported
+
+
+'''
+
+
+#? import library
+import os
+
+
+
+arg1 = '203.252.82.93'
+
+def find_file(ipaddress):
+    cwd = os.getcwd()
+    print ('current dir: ',cwd)
+    filelist = os.listdir(ipaddress)
+    print ('before filter: ',filelist)
+    filelist = [x for x in filelist if x.endswith(".csv")]
+    print (filelist)
+
+
+find_file(arg1)

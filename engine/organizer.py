@@ -38,10 +38,10 @@ def read_indata(indata):
             msg1 = 'data init. date: '+indata[i][0]
             print (msg1.center(40))
 
-        # * convert to datetime
+        # // convert to datetime
         indata[i][0] = datetime.datetime.strptime(indata[i][0], dateformat)
 
-        # * temp is the month
+        # // temp is the month
         temp = indata[i][0].month
         if temp>2 and temp<6:
             indata[i].append ('spring')

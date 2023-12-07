@@ -8,11 +8,48 @@ this program is for the desktop purpose
 
 
 '''
+print ('===========================================')
+print ('= WHAT 2025 ===============================')
+print ('= Developed by Dongseok Yang              =')
+print ('= The world best Baseflow separation tool =')
+print ('============    Now begins!    ============',end='\n\n')
 
-import os
+arg1 = '203.252.82.93'
+msg1 = ' USER:  '+arg1+' '
+print (msg1.center(40,'='))
 
 
 '''
 module 01
 importer.py
 '''
+import importer
+infile = importer.find_file(arg1)
+indata = importer.read_file(arg1, infile)
+print('')
+
+
+'''
+module 02
+orgnizer.py
+'''
+import organizer
+indata = organizer.read_indata(indata)
+print('')
+
+
+'''
+module 03
+RecAnalysis.py
+'''
+
+
+
+
+
+
+'''
+module 0#
+grapher.py
+'''
+

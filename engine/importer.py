@@ -22,7 +22,6 @@ import os
 
 
 
-arg1 = '203.252.82.93'
 warnsign = ' WARNING '
 
 
@@ -44,21 +43,29 @@ def find_file(ipaddress):
         print (filelist)
     else:
         infile = filelist[0]
-        print (warnsign.center(40,'*'))
-        print ('you have one file')
     
     return infile
 
 
-def read_file(infile):
+def read_file(ipaddress,infile):
+    """_summary_
+
+    Args:
+        ipaddress (string): address of the ip. this is user's ip address
+        infile (string): name of the input file
+
+    Returns:
+        list: list of the input data in file
+    """
     infile = infile
-    print ('file: ',infile)
-    with open(arg1+'/'+infile) as f:
-        flines = f.readlines()
-    print (' len: ',len(flines))
-    print (flines[0])
-    print (flines[1])
+    msg1 = 'input file: '+infile
+    print (msg1.center(40))
 
+    with open(ipaddress+'/'+infile) as f:
+        indata = f.readlines()
+    msg2 = 'data length: '+f"{len(indata):,}"
+    print (msg2.center(40))
 
-infile = find_file(arg1)
-read_file(infile)
+    msg3 = ' File import done '
+    print (msg3.center(40,'-'))
+    return indata

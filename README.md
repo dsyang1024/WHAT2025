@@ -1,8 +1,9 @@
 WHAT2025
--------------
+=============
 -------------
 Develop history
-=============
+-------------
+
 #### this program is initially desktop version. however, for the compatibility with the server version, IP address reading function is added.
 
 #### For the future, multiple upgrade will be made.

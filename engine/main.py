@@ -42,8 +42,10 @@ print('')
 module 03
 RecAnalysis.py
 '''
-
-
+import RecAnalysis
+rec_list = RecAnalysis.find_rec(indata)
+rec_list = RecAnalysis.match_strip_method(rec_list)
+RecAnalysis.msm_graph(rec_list)
 
 
 

@@ -21,7 +21,6 @@ this is module for importing/reading the input file
 import os
 
 
-
 warnsign = ' WARNING '
 
 
@@ -34,9 +33,13 @@ def find_file(ipaddress):
     Returns:
         file (string): name of the input file for WHAT2025
     """
+    # // find the file from the ip address folder
+    # ! if not needed, should be changed
     filelist = os.listdir(ipaddress)
     filelist = [x for x in filelist if x.endswith(".csv")]
 
+    # // if there is more than one file, will make error
+    # ! there will be one file with the correct name, this is not a problem for the desktop version
     if (len(filelist) > 1):
         print (warnsign.center(40,'*'))
         print ('you have more than one file')
@@ -57,10 +60,10 @@ def read_file(ipaddress,infile):
     Returns:
         list: list of the input data in file
     """
-    infile = infile
     msg1 = 'input file: '+infile
     print (msg1.center(40))
 
+    # // read the file and make them as a list
     with open(ipaddress+'/'+infile) as f:
         indata = f.readlines()
     msg2 = 'data length: '+f"{len(indata):,}"
@@ -68,4 +71,5 @@ def read_file(ipaddress,infile):
 
     msg3 = ' File import done '
     print (msg3.center(40,'-'))
+    
     return indata

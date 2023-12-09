@@ -28,15 +28,16 @@ def read_indata(indata):
     Returns:
         list: updated data list
     """
-    # add month to the indata list
+    
+    # add month to the indata list and convert the data format
     for i in range(1, len(indata)):
         indata[i] = indata[i].replace('\n','')
         indata[i] = indata[i].split(',')
-        indata[i][1] = round(float(indata[i][1]),3)
-
         if i == 1:
             msg1 = 'data init. date: '+indata[i][0]
             print (msg1.center(40))
+
+        indata[i][1] = round(float(indata[i][1]),4)
 
         # // convert to datetime
         indata[i][0] = datetime.datetime.strptime(indata[i][0], dateformat)
@@ -52,10 +53,10 @@ def read_indata(indata):
         else:
             indata[i].append ('winter')
         
-        msg2 = ' Data conversion done '
-        print (msg2.center(40,'-'))
-        
-        return indata
+    msg2 = ' Data conversion done '
+    print (msg2.center(40,'-'))
+    
+    return indata
 
 
  

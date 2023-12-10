@@ -10,7 +10,21 @@ Develop history
 
 ## Major update
 * 2023-12-06
-    >first update is for the frame of the python engine. importer.py/organizer.py updated
+    >first update is for the frame of the python engine. importer.py/organizer scripts
+    >second update is for the organizer/RecAnalysis script
+
+
+
+## Scripts details
+1. importer
+
+2. organizer
+
+3. RecAnalysis
+
+4. ParaEst
+
+5. Separation
 
 
 ## TODO list

@@ -98,8 +98,6 @@ def msm_graph(rec_list):
     plt.show()
 
 
-
-
 def find_closest(value_list,value):
     value_list = [k[1] for k in value_list]
     diff_list = [round(abs(k-value),4) for k in value_list]

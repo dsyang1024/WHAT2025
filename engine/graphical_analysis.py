@@ -45,12 +45,13 @@ def fdc_plot(indata):
     MCpoint = np.percentile(flowdata,60,method='nearest')
     MFpoint = np.percentile(flowdata,40,method='nearest')
     DCpoint = np.percentile(flowdata,10,method='nearest')
+    
+    msg2 = ' FDC break points are below '
+    print (msg2.center(40,'-'))
     print(HFpoint,MCpoint,MFpoint,DCpoint)
-
 
     # // assign occurence to the each flow
     uniqueflow, flowcounts = np.unique(flowdata, return_counts=True)
-    print(uniqueflow)
     # convert flowcounts to the occurence
     for i in range(1,len(flowcounts)):
         flowcounts[i] = flowcounts[i-1]+flowcounts[i]
@@ -111,7 +112,6 @@ def fdc_plot(indata):
         avgflow.append([int(tempa[1]),int(tempa[0]),round(temp/count,4)])
     # arrange list by month-year
     avgflow.sort()
-    print(avgflow)
 
     # make the pcolormap
     x = np.arange(2009, 2009+len(avgflow)/12,1) # twelve months
@@ -120,12 +120,14 @@ def fdc_plot(indata):
     X, Y = np.meshgrid(x, y)
     z = np.array([i[2] for i in avgflow])
     Z = np.reshape(z, (len(y), len(x)))
-    print(Z)
-    print(type(x), type(y), type(Z))
-    
+
+
     # plot
     c = plt.pcolormesh(X, Y, Z, vmin=np.min(Z), vmax=np.max(Z), cmap='RdYlBu', shading='auto')
     plt.colorbar(c, label='Monthly Avg. Streamflow ($\mathregular{m^{3}}$/sec)')
     plt.xlabel('Year')
     plt.ylabel('Month')
     plt.savefig('Flowgram.png',dpi=600)
+
+
+    return [HFpoint,MCpoint,MFpoint,DCpoint]

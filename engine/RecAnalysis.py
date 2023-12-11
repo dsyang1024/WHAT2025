@@ -79,23 +79,39 @@ def match_strip_method(rec_list):
     return rec_list
 
 
-def msm_graph(rec_list):
+def msm_graph(rec_list, FDC_points):
     """_summary_
         this function is making graph for the matching strip method
     Args:
         rec_list (list): list of the recession curve with the recession date 
+        FDC_points (list): list of the FDC points from the streamflow data
     """
     # todo do the msm plot depends on the flow duration
     # figure size control
     plt.figure(figsize=(8,5))
 
+    def color_picker(peakflow, FDC_points):
+        # this funtion is in-function for the color picker
+        if peakflow > FDC_points[0]:
+            return 'black'
+        elif peakflow <= FDC_points[0] and peakflow > FDC_points[1]:
+            return 'blue'
+        elif peakflow <= FDC_points[1] and peakflow > FDC_points[2]:
+            return 'green'
+        elif peakflow <= FDC_points[2] and peakflow > FDC_points[3]:
+            return 'orange'
+        else:
+            return 'red'
+
+
     for i in range(len(rec_list)):
         x_values = [r[0] for r in rec_list[i]]
         y_values = [r[1] for r in rec_list[i]]
-        sns.lineplot(x=x_values,y=y_values,color='0.5',linewidth=0.5)
+        sns.lineplot(x=x_values,y=y_values,color=color_picker(rec_list[i][0][1], FDC_points),linewidth=0.5)
     
-    plt.xlabel('Recession date')
-    plt.ylabel('Streamflow $\mathregular{m^{3}}$/sec')
+    plt.yscale('log')
+    plt.xlabel('Recession date (days)')
+    plt.ylabel('Streamflow (Log $\mathregular{m^{3}}$/sec)')
     plt.title('Matching Strip Method')
     plt.savefig('MSM_fig.png',dpi=600)
 

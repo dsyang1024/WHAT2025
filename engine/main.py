@@ -47,7 +47,7 @@ module 03
 graphical_analysis.py
 '''
 import graphical_analysis
-graphical_analysis.fdc_plot(indata)
+FDC_points = graphical_analysis.fdc_plot(indata)
 
 
 '''
@@ -57,13 +57,8 @@ RecAnalysis.py
 import RecAnalysis
 rec_list = RecAnalysis.find_rec(indata)
 rec_list = RecAnalysis.match_strip_method(rec_list)
-RecAnalysis.msm_graph(rec_list)
+RecAnalysis.msm_graph(rec_list, FDC_points)
 
 
 
-
-'''
-module 0#
-grapher.py
-'''
 

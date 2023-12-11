@@ -1,3 +1,7 @@
+# this should be at the very top of the file
+import warnings
+warnings.filterwarnings("ignore")
+
 '''
 Dev by  : Dongseok Yang
 Contact : yang2309@purdue.edu
@@ -40,6 +44,14 @@ print('')
 
 '''
 module 03
+graphical_analysis.py
+'''
+import graphical_analysis
+graphical_analysis.fdc_plot(indata)
+
+
+'''
+module 04
 RecAnalysis.py
 '''
 import RecAnalysis

@@ -16,6 +16,8 @@ import seaborn as sns
 sns.set_theme(style="whitegrid", palette="pastel")
 
 
+
+
 def find_rec(indata):
     """_summary_
 
@@ -83,6 +85,7 @@ def msm_graph(rec_list):
     Args:
         rec_list (list): list of the recession curve with the recession date 
     """
+    # todo do the msm plot depends on the flow duration
     # figure size control
     plt.figure(figsize=(8,5))
 
@@ -95,7 +98,6 @@ def msm_graph(rec_list):
     plt.ylabel('Streamflow $\mathregular{m^{3}}$/sec')
     plt.title('Matching Strip Method')
     plt.savefig('MSM_fig.png',dpi=600)
-    plt.show()
 
 
 def find_closest(value_list,value):

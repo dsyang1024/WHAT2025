@@ -107,7 +107,9 @@ def msm_graph(rec_list, FDC_points):
     for i in range(len(rec_list)):
         x_values = [r[0] for r in rec_list[i]]
         y_values = [r[1] for r in rec_list[i]]
-        sns.lineplot(x=x_values,y=y_values,color=color_picker(rec_list[i][0][1], FDC_points),linewidth=0.5)
+        # peakflow is first streamflow of the recession i event
+        peakflow = rec_list[i][0][1]
+        sns.lineplot(x=x_values,y=y_values,color=color_picker(peakflow, FDC_points),linewidth=0.5)
     
     plt.yscale('log')
     plt.xlabel('Recession date (days)')

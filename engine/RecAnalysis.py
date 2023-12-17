@@ -91,17 +91,24 @@ def msm_graph(rec_list, FDC_points):
     plt.figure(figsize=(8,5))
 
     def color_picker(peakflow, FDC_points):
+        # ! Flow criteria
+        # High Flows (HF) : 0-10% occurence
+        # Moist Conditions (MC) : 10-40% occurence
+        # Mid-range Flows (MF) : 40-60% occurence
+        # Dry Conditions (DC) : 60-90% occurence
+        # Low Flows (LF) : 90-100% occurence
+
         # this funtion is in-function for the color picker
         if peakflow > FDC_points[0]:
-            return 'black'
+            return 'black', 'High Flows'
         elif peakflow <= FDC_points[0] and peakflow > FDC_points[1]:
-            return 'blue'
+            return 'blue', 'Moist Conditions'
         elif peakflow <= FDC_points[1] and peakflow > FDC_points[2]:
-            return 'green'
+            return 'green', 'Mid-range Flows'
         elif peakflow <= FDC_points[2] and peakflow > FDC_points[3]:
-            return 'orange'
+            return 'orange', 'Dry Conditions'
         else:
-            return 'red'
+            return 'red', 'Low Flows'
 
 
     for i in range(len(rec_list)):
@@ -109,11 +116,18 @@ def msm_graph(rec_list, FDC_points):
         y_values = [r[1] for r in rec_list[i]]
         # peakflow is first streamflow of the recession i event
         peakflow = rec_list[i][0][1]
-        sns.lineplot(x=x_values,y=y_values,color=color_picker(peakflow, FDC_points),linewidth=0.5)
+        lncolor, lnlegend = color_picker(peakflow, FDC_points)
+        lnlegend = None if i not in FDC_points else lnlegend
+        sns.lineplot(x=x_values,y=y_values,color=lncolor,linewidth=0.5, label=lnlegend)
     
     plt.yscale('log')
     plt.xlabel('Recession date (days)')
     plt.ylabel('Streamflow (Log $\mathregular{m^{3}}$/sec)')
+    plt.annotate("High Flows", xy=(0.7,0.8), xycoords='figure fraction', color='black', weight='bold', fontsize=10)
+    plt.annotate("Moist Conditions", xy=(0.7,0.765), xycoords='figure fraction', color='blue', weight='bold', fontsize=10)
+    plt.annotate("Mid-range Flows", xy=(0.7,0.73), xycoords='figure fraction', color='green', weight='bold', fontsize=10)
+    plt.annotate("Dry Conditions", xy=(0.7,0.695), xycoords='figure fraction', color='orange', weight='bold', fontsize=10)
+    plt.annotate("Low Flows", xy=(0.7,0.66), xycoords='figure fraction', color='red', weight='bold', fontsize=10)
     plt.title('Matching Strip Method')
     plt.savefig('MSM_fig.png',dpi=600)
 

@@ -13,6 +13,11 @@ Develop history
     >first update is for the frame of the python engine. importer.py/organizer scripts
     >second update is for the organizer/RecAnalysis script
 
+* 2023-12-16
+    >RecAnalysis graph updated (MSM_fig.png)
+    >Collecting basedata for the Recession Machine learning.
+    >No change to main.py
+
 
 
 ## Scripts details

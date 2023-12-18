@@ -15,8 +15,6 @@ import datetime
 dateformat = '%Y-%m-%d'
 
 
-
-
 def read_indata(indata):
     # change the header
     indata[0] = ['date(YYYY-m-d)', 'streamflow', 'Season']

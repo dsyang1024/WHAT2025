@@ -60,5 +60,8 @@ rec_list = RecAnalysis.match_strip_method(rec_list)
 RecAnalysis.msm_graph(rec_list, FDC_points)
 
 
-
+'''
+module 05
+MRC.py
+'''
 

@@ -1,6 +1,17 @@
 # this should be at the very top of the file
+# incoming arguments
+arg1 = '203.252.82.93'
+msg1 = ' USER:  '+arg1+' '
+
+
+# importing libraries
 import warnings
 warnings.filterwarnings("ignore")
+import os
+os.remove(arg1+'/'+arg1+".log")
+import logging
+logging.basicConfig(filename=arg1+'/'+arg1+".log", level=logging.INFO)
+
 
 '''
 Dev by  : Dongseok Yang
@@ -17,9 +28,7 @@ print ('= WHAT 2025 ===============================')
 print ('= Developed by Dongseok Yang              =')
 print ('= The world best Baseflow separation tool =')
 print ('============    Now begins!    ============',end='\n\n')
-
-arg1 = '203.252.82.93'
-msg1 = ' USER:  '+arg1+' '
+logging.info(msg1)
 print (msg1.center(40,'='))
 
 

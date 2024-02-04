@@ -18,6 +18,9 @@ Develop history
     >Collecting basedata for the Recession Machine learning.
     >No change to main.py
 
+* 2024-02-04
+    >Added logging function (not in use) - main.py
+
 
 
 ## Scripts details
